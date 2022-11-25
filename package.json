@@ -1,9 +1,9 @@
 {
-  "name": "react-typescript-starter",
-  "description": "Minimalist React 18 starter template with TypeScript ⚛",
+  "name": "frontend-excercise-francisco-molina",
+  "description": "Challenge as part of the recruitment process for NanLabs",
   "version": "1.0.0",
   "main": "src/index.tsx",
-  "repository": "https://github.com/GR34SE/react-typescript-starter.git",
+  "repository": "https://github.com/frankMolinaDev/frontend-excercise",
   "license": "MIT",
   "scripts": {
     "develop": "webpack-cli serve --mode=development --env development --open --hot",

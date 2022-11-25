@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import path from "path";
 import webpack, {Configuration} from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
