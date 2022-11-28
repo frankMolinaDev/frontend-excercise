@@ -1,33 +1,31 @@
 import React from "react";
 import {CopyOutlined, HistoryOutlined, PictureOutlined} from "@ant-design/icons";
-import type {MenuProps} from "antd";
+import {getImagesList} from "src/request/request";
 
-type MenuItem = Required<MenuProps>["items"][number];
-
-function getItem(
-    label: React.ReactNode,
-    key: React.Key,
-    icon?: React.ReactNode,
-    children?: MenuItem[]
-): MenuItem {
+function getItem(label, key, icon, children) {
     return {
         key,
         icon,
         children,
         label
-    } as MenuItem;
+    };
 }
 
-export const items: MenuItem[] = [
-    getItem("Copy to Clipboard", "1", <CopyOutlined />),
-    getItem("Images", "sub1", <PictureOutlined />, [
-        getItem("Image 1", "3"),
-        getItem("Image 2", "4"),
-        getItem("Image 3", "5")
-    ]),
+const getImageItems = async () => {
+    const imagesList = await getImagesList();
+
+    return imagesList.map((imageData) => {
+        const {name, url} = imageData;
+        return getItem(name, name, undefined, url);
+    });
+};
+
+export const items = [
+    getItem("Copy to Clipboard", "1", <CopyOutlined />, undefined),
+    getItem("Images", "sub1", <PictureOutlined />, getImageItems()),
     getItem("History", "sub2", <HistoryOutlined />, [
-        getItem("Change 1", "6"),
-        getItem("Change 2", "7"),
-        getItem("Change 3", "8")
+        getItem("Change 1", "6", undefined, undefined),
+        getItem("Change 2", "7", undefined, undefined),
+        getItem("Change 3", "8", undefined, undefined)
     ])
 ];

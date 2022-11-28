@@ -3,6 +3,7 @@ import {Layout} from "antd";
 import FeaturesSideBar from "components/FeaturesSideBar/FeaturesSideBar";
 import Header from "components/Header/Header";
 import OptionsTabs from "components/OptionsTabs/OptionsTabs";
+
 const {Content, Footer} = Layout;
 
 function Home() {
