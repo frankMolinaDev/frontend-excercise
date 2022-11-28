@@ -1,8 +1,8 @@
 import React from "react";
 import {Layout} from "antd";
-import FeaturesSideBar from "components/FeaturesSideBar/FeaturesSideBar";
-import Header from "components/Header/Header";
-import OptionsTabs from "components/OptionsTabs/OptionsTabs";
+import FeaturesSideBar from "../FeaturesSideBar/FeaturesSideBar";
+import Header from "../Header/Header";
+import OptionsTabs from "../OptionsTabs/OptionsTabs";
 
 const {Content, Footer} = Layout;
 

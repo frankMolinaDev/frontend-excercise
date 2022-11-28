@@ -2,7 +2,8 @@
   "name": "frontend-excercise-francisco-molina",
   "description": "Challenge as part of the recruitment process for NanLabs",
   "version": "1.0.0",
-  "main": "src/index.tsx",
+  "main": "src/index.jsx",
+  "type": "module",
   "repository": "https://github.com/frankMolinaDev/frontend-excercise",
   "license": "MIT",
   "scripts": {
@@ -12,13 +13,6 @@
     "lint:fix": "eslint './src/**/*.{ts,tsx,js,jsx}' --fix"
   },
   "devDependencies": {
-    "@types/node": "16.18.3",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.9",
-    "@types/webpack": "5.28.0",
-    "@types/webpack-dev-server": "4.7.1",
-    "@typescript-eslint/eslint-plugin": "5.44.0",
-    "@typescript-eslint/parser": "5.44.0",
     "css-loader": "^6.7.2",
     "eslint": "8.28.0",
     "eslint-config-prettier": "8.5.0",
@@ -27,21 +21,21 @@
     "eslint-plugin-react": "7.31.11",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-webpack-plugin": "3.2.0",
-    "fork-ts-checker-webpack-plugin": "7.2.13",
     "html-webpack-plugin": "5.5.0",
     "prettier": "2.8.0",
-    "ts-loader": "^9.4.1",
-    "ts-node": "10.9.1",
-    "tsconfig-paths-webpack-plugin": "3.5.2",
-    "typescript": "4.9.3",
     "webpack": "5.75.0",
     "webpack-cli": "4.10.0",
     "webpack-dev-server": "4.11.1"
   },
   "dependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
     "@craco/craco": "^7.0.0",
     "antd": "^5.0.2",
     "axios": "^1.2.0",
+    "babel-loader": "^9.1.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   }

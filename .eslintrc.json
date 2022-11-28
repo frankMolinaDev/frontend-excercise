@@ -1,7 +1,5 @@
 {
-  "parser": "@typescript-eslint/parser",
   "plugins": [
-    "@typescript-eslint",
     "react",
     "react-hooks",
     "eslint-plugin-import",
@@ -12,14 +10,10 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended"
   ],
   "parserOptions": {
-    "project": [
-      "tsconfig.json"
-    ],
     "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
@@ -27,14 +21,11 @@
     }
   },
   "rules": {
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-unused-vars": ["warn", {"ignoreRestSiblings": true}],
     "react/jsx-filename-extension": [
       "warn",
       {
         "extensions": [
-          ".jsx",
-          ".tsx"
+          ".jsx"
         ]
       }
     ],
