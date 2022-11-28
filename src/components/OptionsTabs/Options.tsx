@@ -1,7 +1,8 @@
-import {AndroidOutlined, AppleOutlined} from "@ant-design/icons";
+import {RotateRightOutlined, SettingOutlined} from "@ant-design/icons";
 
 export const rotation = {
-    Icon: AndroidOutlined,
+    title: "Rotation",
+    Icon: RotateRightOutlined,
     effects: [
         {
             name: "Flip Axis",
@@ -23,7 +24,8 @@ export const rotation = {
 };
 
 export const adjustment = {
-    Icon: AppleOutlined,
+    title: "Adjustment",
+    Icon: SettingOutlined,
     effects: [
         {
             name: "Brightness",
@@ -80,4 +82,4 @@ export const adjustment = {
     ]
 };
 
-export const options = [rotation, adjustment];
+export const options = [adjustment, rotation];

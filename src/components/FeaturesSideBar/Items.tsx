@@ -1,5 +1,5 @@
 import React from "react";
-import {CopyOutlined, HistoryOutlined} from "@ant-design/icons";
+import {CopyOutlined, HistoryOutlined, PictureOutlined} from "@ant-design/icons";
 import type {MenuProps} from "antd";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -20,9 +20,14 @@ function getItem(
 
 export const items: MenuItem[] = [
     getItem("Copy to Clipboard", "1", <CopyOutlined />),
-    getItem("History", "sub1", <HistoryOutlined />, [
-        getItem("Change 1", "3"),
-        getItem("Change 2", "4"),
-        getItem("Change 3", "5")
+    getItem("Images", "sub1", <PictureOutlined />, [
+        getItem("Image 1", "3"),
+        getItem("Image 2", "4"),
+        getItem("Image 3", "5")
+    ]),
+    getItem("History", "sub2", <HistoryOutlined />, [
+        getItem("Change 1", "6"),
+        getItem("Change 2", "7"),
+        getItem("Change 3", "8")
     ])
 ];

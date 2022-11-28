@@ -12,10 +12,6 @@ function Home() {
             <Layout className="site-layout">
                 <Header />
                 <Content style={{margin: "0 16px"}}>
-                    {/* <Breadcrumb style={{margin: "16px 0"}}>
-                        <Breadcrumb.Item>First</Breadcrumb.Item>
-                        <Breadcrumb.Item>Second</Breadcrumb.Item>
-                    </Breadcrumb> */}
                     <div>
                         <picture>
                             <img src="https://assets.imgix.net/blog/unsplash-kiss.jpg?w=320&h=568&fit=crop" />
