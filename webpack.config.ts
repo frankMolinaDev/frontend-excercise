@@ -19,6 +19,7 @@ const webpackConfig = (env): Configuration => ({
     },
     module: {
         rules: [
+            {test: /\.css$/, use: "css-loader"},
             {
                 test: /\.tsx?$/,
                 loader: "ts-loader",
