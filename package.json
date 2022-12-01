@@ -3,7 +3,6 @@
   "description": "Challenge as part of the recruitment process for NanLabs",
   "version": "1.0.0",
   "main": "src/index.jsx",
-  "type": "module",
   "repository": "https://github.com/frankMolinaDev/frontend-excercise",
   "license": "MIT",
   "scripts": {
@@ -33,10 +32,13 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@craco/craco": "^7.0.0",
+    "@reduxjs/toolkit": "^1.9.1",
     "antd": "^5.0.2",
     "axios": "^1.2.0",
     "babel-loader": "^9.1.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.0"
   }
 }
