@@ -6,7 +6,6 @@ export const getImagesList = () => {
             "https://storage.googleapis.com/nanlabs-engineering-technical-interviews/imgix-samples-list.json"
         )
         .then((res) => {
-            console.log("res.data", res.data);
             return res.data;
         });
 };

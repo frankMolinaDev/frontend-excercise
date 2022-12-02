@@ -1,14 +1,6 @@
 import React from "react";
 import {CopyOutlined, HistoryOutlined} from "@ant-design/icons";
-
-export function getItem(label, key, icon = null, children = null) {
-    return {
-        key,
-        icon,
-        children,
-        label
-    };
-}
+import {getItem} from "../../utils";
 
 export const items = [
     getItem("Copy to Clipboard", "1", <CopyOutlined />, undefined),

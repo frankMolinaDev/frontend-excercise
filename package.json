@@ -5,6 +5,7 @@
   "main": "src/index.jsx",
   "repository": "https://github.com/frankMolinaDev/frontend-excercise",
   "license": "MIT",
+  
   "scripts": {
     "develop": "webpack-cli serve --mode=development --env development --open --hot",
     "build": "webpack --mode=production --env production --progress",
@@ -32,6 +33,7 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@craco/craco": "^7.0.0",
+    "@imgix/js-core": "^3.7.0",
     "@reduxjs/toolkit": "^1.9.1",
     "antd": "^5.0.2",
     "axios": "^1.2.0",

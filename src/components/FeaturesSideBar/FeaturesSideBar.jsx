@@ -1,22 +1,31 @@
 import React, {useState} from "react";
-import {
-    // Button,
-    Layout,
-    Menu
-} from "antd";
-import {increment} from "../../redux/slices/counterSlice";
+import {Layout, Menu} from "antd";
 import {useDispatch, useSelector} from "react-redux";
-import {items} from "./Items";
-
+import {getItem} from "../../utils";
+import {updateTransformationHistory} from "../../redux/slices/historySlice";
 const {Sider} = Layout;
 
 function FeaturesSideBar() {
     const [collapsed, setCollapsed] = useState(false);
-    const count = useSelector((state) => state.counter.value);
     const dispatch = useDispatch();
-    const onItemClick = () => {
-        dispatch(increment());
-        console.log(count);
+
+    const {transformations, count} = useSelector((state) => state.history);
+    const menuItems = [getItem("Copy to Clipboard!", 1), transformations];
+
+    const onItemClick = (e) => {
+        switch (e.key) {
+            case "1":
+                dispatch(
+                    updateTransformationHistory([
+                        ...transformations.children,
+                        getItem(`New Change ${count - 1}`, count)
+                    ])
+                );
+                break;
+
+            default:
+                break;
+        }
     };
     return (
         <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
@@ -25,7 +34,7 @@ function FeaturesSideBar() {
                 theme="dark"
                 defaultSelectedKeys={["1"]}
                 mode="inline"
-                items={items}
+                items={menuItems}
                 onClick={onItemClick}
             ></Menu>
         </Sider>
