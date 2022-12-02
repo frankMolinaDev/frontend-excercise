@@ -7,8 +7,8 @@ const client = new ImgixClient({
 export const generateNewTransformationImage = (
     path = "/blog/unsplash-kiss.jpg",
     params = {
-        w: 100,
-        h: 500
+        w: 800,
+        h: 600
     }
 ) => {
     const url = client.buildURL(path, params);

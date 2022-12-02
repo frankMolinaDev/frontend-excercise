@@ -6,6 +6,7 @@ import EffectsGrid from "./EffectsGrid/EffectsGrid";
 function OptionsTabs() {
     return (
         <Tabs
+            style={{height: 250, overflowY: "auto", overflowX: "hidden"}}
             defaultActiveKey="2"
             items={options.map((option, i) => {
                 const {Icon, title, effects} = option;

@@ -3,22 +3,20 @@ import {Layout} from "antd";
 import FeaturesSideBar from "../FeaturesSideBar/FeaturesSideBar";
 import Header from "../Header/Header";
 import OptionsTabs from "../OptionsTabs/OptionsTabs";
+import {useSelector} from "react-redux";
+import PreviewImage from "../PreviewImage/PreviewImage";
 
 const {Content, Footer} = Layout;
 
 function Home() {
+    const path = useSelector((state) => state.image.path);
     return (
-        <Layout style={{minHeight: "100vh"}}>
+        <Layout style={{minHeight: "calc(100vh - 18px)"}}>
             <FeaturesSideBar />
             <Layout className="site-layout">
                 <Header />
-                <Content style={{margin: "0 16px"}}>
-                    <div>
-                        <picture>
-                            <img src="https://assets.imgix.net/blog/unsplash-kiss.jpg?w=320&h=568&fit=crop" />
-                        </picture>
-                    </div>
-
+                <Content style={{margin: "0 16px", display: "flex", flexDirection: "column"}}>
+                    <PreviewImage path={path} />
                     <OptionsTabs />
                 </Content>
                 <Footer style={{textAlign: "center"}}>
