@@ -10,9 +10,13 @@ const PreviewImage = ({path, maxHeight = 600, maxWidth = 800}) => {
                 alignItems: "center"
             }}
         >
-            <picture>
-                <img src={path} style={{maxHeight, maxWidth}} />
-            </picture>
+            {path ? (
+                <picture>
+                    <img src={path} style={{maxHeight, maxWidth}} />
+                </picture>
+            ) : (
+                <div>Please select an image from the list or upload one</div>
+            )}
         </div>
     );
 };

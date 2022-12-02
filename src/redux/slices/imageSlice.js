@@ -1,15 +1,19 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    path: "https://assets.imgix.net/blog/unsplash-kiss.jpg?w=1200&h=2500&fit=crop"
+    path: ""
 };
 
 export const imageSlice = createSlice({
     name: "image",
     initialState,
-    reducers: {}
+    reducers: {
+        updatePath: (state, {payload}) => {
+            state.path = payload;
+        }
+    }
 });
 
-// export const {} = imageSlice.actions;
+export const {updatePath} = imageSlice.actions;
 
 export default imageSlice.reducer;
