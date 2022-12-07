@@ -11,7 +11,7 @@ const webpackConfig = (env) => ({
     entry: "./src/index.jsx",
     ...(env.production || !env.development ? {} : {devtool: "eval-source-map"}),
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: [".js", ".jsx", "css"]
     },
     output: {
         path: path.join(__dirname, "/dist"),
@@ -21,7 +21,7 @@ const webpackConfig = (env) => ({
         rules: [
             {test: /\.css$/, use: "css-loader"},
             {
-                test: /\.?jsx$/,
+                test: /\.(jsx|js)$/,
                 exclude: /node_modules/,
                 loader: "babel-loader",
                 options: {

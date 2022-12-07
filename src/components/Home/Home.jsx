@@ -6,18 +6,21 @@ import OptionsTabs from "../OptionsTabs/OptionsTabs";
 import {useSelector} from "react-redux";
 import PreviewImage from "../PreviewImage/PreviewImage";
 import "../../styles/theme.css";
+import {generateNewTransformationImage} from "../../request/imgxUtils";
+import UploadImage from "../UploadImage/UploadImage";
 
 const {Content, Footer} = Layout;
 
 function Home() {
-    const path = useSelector((state) => state.image.path);
+    const {path, params} = useSelector((state) => state.image);
+    const imageURL = generateNewTransformationImage(path, params);
     return (
         <Layout style={{minHeight: "calc(100vh - 18px)"}}>
             <FeaturesSideBar />
             <Layout className="site-layout">
                 <Header />
                 <Content style={{margin: "0 16px", display: "flex", flexDirection: "column"}}>
-                    <PreviewImage path={path} />
+                    {imageURL ? <PreviewImage path={imageURL} /> : <UploadImage />}
                     <OptionsTabs />
                 </Content>
                 <Footer style={{textAlign: "center"}}>

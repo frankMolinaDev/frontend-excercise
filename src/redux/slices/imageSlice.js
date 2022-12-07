@@ -1,8 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {getItem} from "../../utils";
 
 const initialState = {
     path: "",
-    params: {}
+    params: {},
+    imagesList: getItem("Select Image", "sub3", undefined, [])
 };
 
 export const imageSlice = createSlice({
@@ -14,10 +16,13 @@ export const imageSlice = createSlice({
         },
         updateParams: (state, {payload}) => {
             state.params = payload;
+        },
+        updateDefaultImagesList: (state, {payload}) => {
+            state.imagesList.children = payload;
         }
     }
 });
 
-export const {updatePath, updateParams} = imageSlice.actions;
+export const {updatePath, updateParams, updateDefaultImagesList} = imageSlice.actions;
 
 export default imageSlice.reducer;

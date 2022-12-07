@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getImagesList = () => {
-    axios
+    return axios
         .get(
             "https://storage.googleapis.com/nanlabs-engineering-technical-interviews/imgix-samples-list.json"
         )

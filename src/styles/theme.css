@@ -9,3 +9,10 @@
 .ant-tabs-content ant-tabs-content-top {
   height: 100;
 }
+
+.image-container {
+  flex: 2 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

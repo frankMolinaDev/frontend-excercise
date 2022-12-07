@@ -3,7 +3,7 @@ import {getItem} from "../../utils";
 
 const initialState = {
     transformations: getItem("History", "sub2", undefined, []),
-    count: 2
+    count: 0
 };
 
 export const historySlice = createSlice({

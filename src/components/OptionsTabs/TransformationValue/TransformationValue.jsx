@@ -1,9 +1,9 @@
 import {Button} from "antd";
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {HISTORY_ITEM} from "../../../constants";
 import {updateTransformationHistory} from "../../../redux/slices/historySlice";
-import {updateParams, updatePath} from "../../../redux/slices/imageSlice";
-import {generateNewTransformationImage} from "../../../request/imgxUtils";
+import {updateParams} from "../../../redux/slices/imageSlice";
 import {getItem} from "../../../utils";
 import ValueSlider from "./ValueSlider";
 
@@ -22,16 +22,19 @@ function TransformationValue({transformation, type}) {
 
     const applyTransformation = () => {
         const newParams = {...params, [transformation.id]: inputValue};
-        console.log("newParams", newParams);
-        console.log("params", params);
 
         dispatch(
             updateTransformationHistory([
                 ...transformations.children,
-                getItem(`${transformation.name} Change`, count, undefined, undefined, params)
+                getItem(
+                    `${transformation.name} Change`,
+                    `${HISTORY_ITEM}-${count}`,
+                    undefined,
+                    undefined,
+                    params
+                )
             ])
         );
-        dispatch(updatePath(generateNewTransformationImage("/blog/unsplash-kiss.jpg", newParams)));
         dispatch(updateParams(newParams));
     };
 

@@ -11,6 +11,7 @@ export const generateNewTransformationImage = (
         h: 600
     }
 ) => {
+    if (path === "") return;
     const url = client.buildURL(path, params);
     return url;
 };
