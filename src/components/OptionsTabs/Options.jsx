@@ -3,7 +3,7 @@ import {RotateRightOutlined, SettingOutlined} from "@ant-design/icons";
 export const rotation = {
     title: "Rotation",
     Icon: RotateRightOutlined,
-    effects: [
+    transformations: [
         {
             name: "Flip Axis",
             id: "flip",
@@ -20,13 +20,14 @@ export const rotation = {
             values: [0, 359],
             placeholder: "From 0 to 359"
         }
-    ]
+    ],
+    type: "select"
 };
 
 export const adjustment = {
     title: "Adjustment",
     Icon: SettingOutlined,
-    effects: [
+    transformations: [
         {
             name: "Brightness",
             id: "bri"
@@ -79,7 +80,8 @@ export const adjustment = {
             name: "Vibrance ",
             id: "vib"
         }
-    ]
+    ],
+    type: "slider"
 };
 
 export const options = [adjustment, rotation];

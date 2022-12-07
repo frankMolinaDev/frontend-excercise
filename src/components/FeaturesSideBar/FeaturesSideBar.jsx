@@ -2,8 +2,7 @@ import React, {useState} from "react";
 import {Layout, Menu} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {getHistoryItemParams, getItem} from "../../utils";
-import {updateTransformationHistory} from "../../redux/slices/historySlice";
-import {updateParams, updatePath} from "../../redux/slices/imageSlice";
+import {updatePath} from "../../redux/slices/imageSlice";
 import {generateNewTransformationImage} from "../../request/imgxUtils";
 const {Sider} = Layout;
 
@@ -14,26 +13,16 @@ function FeaturesSideBar() {
         // path,
         params
     } = useSelector((state) => state.image);
-    const {transformations, count} = useSelector((state) => state.history);
+    const {transformations} = useSelector((state) => state.history);
     const menuItems = [
         getItem("Copy to Clipboard!", 1),
         getItem("Add Image", 100),
-        getItem("Change width and height", 1000),
         transformations
     ];
 
-    console.log("transformations", transformations);
     const onItemClick = (e) => {
         switch (e.key) {
             case "1":
-                dispatch(
-                    updateTransformationHistory([
-                        ...transformations.children,
-                        getItem(`New Change ${count - 1}`, count, undefined, undefined, {
-                            hello: "world"
-                        })
-                    ])
-                );
                 break;
             case "100":
                 dispatch(
@@ -41,22 +30,8 @@ function FeaturesSideBar() {
                 );
                 break;
 
-            case "1000":
-                dispatch(
-                    updateTransformationHistory([
-                        ...transformations.children,
-                        getItem(`New Change ${count - 1}`, count, undefined, undefined, params)
-                    ])
-                );
-                dispatch(
-                    updatePath(
-                        generateNewTransformationImage("/blog/unsplash-kiss.jpg", {w: 100, h: 100})
-                    )
-                );
-                dispatch(updateParams({w: 100, h: 100}));
-                break;
-
             default:
+                console.log("params", getHistoryItemParams(e.key, transformations.children));
                 dispatch(
                     updatePath(
                         generateNewTransformationImage(

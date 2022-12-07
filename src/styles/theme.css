@@ -1,0 +1,11 @@
+.ant-tabs {
+  height: 100%;
+}
+
+.ant-tabs-content-holder {
+  display: flex;
+}
+
+.ant-tabs-content ant-tabs-content-top {
+  height: 100;
+}

@@ -1,15 +1,15 @@
 import React from "react";
 import {options} from "./Options";
 import {Tabs} from "antd";
-import EffectsGrid from "./EffectsGrid/EffectsGrid";
+import TransformationsGrid from "./TransformationsGrid/TransformationsGrid";
 
 function OptionsTabs() {
     return (
         <Tabs
             style={{height: 250, overflowY: "auto", overflowX: "hidden"}}
-            defaultActiveKey="2"
+            defaultActiveKey="1"
             items={options.map((option, i) => {
-                const {Icon, title, effects} = option;
+                const {Icon, title, transformations, type} = option;
                 const id = String(i + 1);
 
                 return {
@@ -20,7 +20,7 @@ function OptionsTabs() {
                         </span>
                     ),
                     key: id,
-                    children: <EffectsGrid effects={effects} />
+                    children: <TransformationsGrid transformations={transformations} type={type} />
                 };
             })}
         />

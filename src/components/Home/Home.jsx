@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 import OptionsTabs from "../OptionsTabs/OptionsTabs";
 import {useSelector} from "react-redux";
 import PreviewImage from "../PreviewImage/PreviewImage";
+import "../../styles/theme.css";
 
 const {Content, Footer} = Layout;
 
