@@ -34,10 +34,10 @@ function TransformationsGrid({transformations, type}) {
                     return (
                         <Col key={"A" + i} span={6}>
                             <Button
+                                className="transformations-grid-button"
                                 type="primary"
                                 shape="round"
                                 size="large"
-                                style={{minHeight: 35, width: "100%"}}
                                 onClick={() => showDrawer(transformation)}
                                 disabled={disableOptions}
                             >

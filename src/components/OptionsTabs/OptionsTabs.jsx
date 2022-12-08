@@ -6,7 +6,7 @@ import TransformationsGrid from "./TransformationsGrid/TransformationsGrid";
 function OptionsTabs() {
     return (
         <Tabs
-            style={{height: 250, overflowY: "auto", overflowX: "hidden"}}
+            className="tabs"
             defaultActiveKey="1"
             items={options.map((option, i) => {
                 const {Icon, title, transformations, type} = option;

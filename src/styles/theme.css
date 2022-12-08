@@ -1,4 +1,4 @@
-/* ===== Scrollbar CSS ===== */
+/*Scrollbar classes*/
   /* Firefox */
   * {
     scrollbar-width: thin;
@@ -15,11 +15,92 @@
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color:#ffffff;
-    /* border-radius: 8px; */
-    border: 1px solid #ffffff;
+    background-color:#6f64f5;
+    border-radius: 8px;
+    border: 1px solid #000c17;
   }
+/*End of Scrollbar classes*/
 
-  .ant-tabs-content {
-    height: 100%;
-  }
+/* Header classes */
+
+.header-url-text {
+  color: #ffffff;
+  font-size: 20
+}
+
+.site-layout-background {
+  padding: 0 !important;
+  height: 5vh !important;
+  display: flex;
+}
+
+.header-elements-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.company-logo-container {
+  width: 200px;
+  height: 5vh;
+  padding: 8px 0px 0 22px;
+}
+
+/* End of header classes */
+
+/* Sidebar classes */
+.sidebar {
+  overflow: auto;
+  height: 95vh
+}
+/* End of Sidebar classes */
+
+/*Content classes*/
+.content {
+  margin: 0 16px;
+  display: flex;
+  flex-direction: column;
+}
+/*End of Content classes*/
+  
+/*Footer classes*/
+.footer {
+  text-align: center;
+}
+/*End of footer classes*/
+
+/*Tabs classes*/
+.ant-tabs-content {
+  height: 100%;
+}
+
+.tabs {
+  height: 250;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+/*End of Tabs classes*/
+
+/*Transformations Grid classes*/
+.transformations-grid-button {
+  min-height: 35 !important; 
+  width: 100% !important;
+}
+/*End of Transfomations Grid classes*/
+
+/*Inputs classes*/
+
+.select {
+  width: 120
+}
+/*End of Inputs classes*/
+
+/*Preview Image classes*/
+.picture-container {
+    flex: 2 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+/*End of Preview Image classes*/

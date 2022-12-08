@@ -6,9 +6,7 @@ const ValueSelect = ({onChange, inputValue, values}) => {
         <Select
             defaultValue={values[0]}
             value={inputValue}
-            style={{
-                width: 120
-            }}
+            className={"select"}
             onChange={onChange}
             options={values}
         />

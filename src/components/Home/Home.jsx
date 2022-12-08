@@ -14,17 +14,17 @@ function Home() {
     const {path, params} = useSelector((state) => state.image);
     const imageURL = generateNewTransformationImage(path, params);
     return (
-        <Layout style={{minHeight: "calc(100vh - 18px)"}}>
-            <FeaturesSideBar />
+        <Layout>
+            <Header />
             <Layout className="site-layout">
-                <Header />
-                <Content style={{margin: "0 16px", display: "flex", flexDirection: "column"}}>
+                <FeaturesSideBar />
+                <Content className="content">
                     {imageURL ? <PreviewImage path={imageURL} /> : <UploadImage />}
                     <OptionsTabs />
+                    <Footer className="footer">
+                        Francisco Molina ©2022 As part of Nan-Labs recruitment process
+                    </Footer>
                 </Content>
-                <Footer style={{textAlign: "center"}}>
-                    Francisco Molina ©2022 As part of Nan-Labs recruitment process
-                </Footer>
             </Layout>
         </Layout>
     );
