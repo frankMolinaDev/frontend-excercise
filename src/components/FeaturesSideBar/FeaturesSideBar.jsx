@@ -6,7 +6,6 @@ import {arrayToMenuItems, checkMenuItemType, getItem, getMenuItemProp} from "../
 import {getImagesList} from "../../request/request";
 import {HISTORY_ITEM, IMAGE_LIST_ITEM} from "../../constants";
 import {updateDefaultImagesList, updateParams, updatePath} from "../../redux/slices/imageSlice";
-import "../../styles/theme.css";
 
 const {Sider} = Layout;
 

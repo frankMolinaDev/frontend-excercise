@@ -30,3 +30,11 @@ export const checkMenuItemType = (key) => {
     if (key.includes(IMAGE_LIST_ITEM)) return IMAGE_LIST_ITEM;
     return ADD_IMAGE;
 };
+
+export const stringToLabelValueObj = (string) => {
+    return {label: string, value: string};
+};
+
+export const stringArrToLabelValueObjArr = (stringArr) => {
+    return stringArr.map((string) => stringToLabelValueObj(string));
+};
