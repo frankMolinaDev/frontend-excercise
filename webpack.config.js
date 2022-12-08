@@ -3,7 +3,6 @@ import {fileURLToPath} from "url";
 import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -11,7 +10,7 @@ const webpackConfig = (env) => ({
     entry: "./src/index.jsx",
     ...(env.production || !env.development ? {} : {devtool: "eval-source-map"}),
     resolve: {
-        extensions: [".js", ".jsx", "css"]
+        extensions: [".js", ".jsx", ".css"]
     },
     output: {
         path: path.join(__dirname, "/dist"),
@@ -19,13 +18,16 @@ const webpackConfig = (env) => ({
     },
     module: {
         rules: [
-            {test: /\.css$/, use: "css-loader"},
+            {test: /\.css$/i, use: ["style-loader", "css-loader"]},
             {
                 test: /\.(jsx|js)$/,
                 exclude: /node_modules/,
                 loader: "babel-loader",
                 options: {
                     presets: ["@babel/preset-env", "@babel/preset-react"]
+                },
+                resolve: {
+                    fullySpecified: false
                 }
             }
         ]
@@ -36,8 +38,6 @@ const webpackConfig = (env) => ({
         }),
         new webpack.DefinePlugin({
             "process.env.PRODUCTION": env.production || !env.development
-            // "process.env.NAME": JSON.stringify(require("./package.json").name),
-            // "process.env.VERSION": JSON.stringify(require("./package.json").version)
         }),
         new ESLintPlugin({files: "./src/**/*.{js,jsx}"})
     ]

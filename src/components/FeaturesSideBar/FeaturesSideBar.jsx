@@ -6,6 +6,7 @@ import {arrayToMenuItems, checkMenuItemType, getItem, getMenuItemProp} from "../
 import {getImagesList} from "../../request/request";
 import {HISTORY_ITEM, IMAGE_LIST_ITEM} from "../../constants";
 import {updateDefaultImagesList, updateParams, updatePath} from "../../redux/slices/imageSlice";
+import "../../styles/theme.css";
 
 const {Sider} = Layout;
 
@@ -35,8 +36,15 @@ function FeaturesSideBar() {
         }
     };
     return (
-        <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-            <div className="logo" />
+        <Sider
+            collapsible
+            collapsed={collapsed}
+            onCollapse={(value) => setCollapsed(value)}
+            style={{
+                overflow: "auto",
+                height: "100vh"
+            }}
+        >
             <Menu
                 theme="dark"
                 defaultSelectedKeys={["1"]}

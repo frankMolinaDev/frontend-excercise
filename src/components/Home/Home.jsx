@@ -5,7 +5,6 @@ import Header from "../Header/Header";
 import OptionsTabs from "../OptionsTabs/OptionsTabs";
 import {useSelector} from "react-redux";
 import PreviewImage from "../PreviewImage/PreviewImage";
-import "../../styles/theme.css";
 import {generateNewTransformationImage} from "../../request/imgxUtils";
 import UploadImage from "../UploadImage/UploadImage";
 
