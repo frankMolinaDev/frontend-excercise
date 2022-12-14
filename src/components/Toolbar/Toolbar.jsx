@@ -3,7 +3,7 @@ import {UndoOutlined, RedoOutlined, DeleteOutlined, CloudUploadOutlined} from "@
 
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {chekMenuItemPosition, getMenuItemProp} from "../../utils";
+import {chekMenuItemPosition, getMenuItemProp, isLastHistoryElement} from "../../utils";
 import {
     updateSelectedHistoryItemKey,
     updateTransformationHistory
@@ -16,10 +16,9 @@ function Toolbar() {
     const dispatch = useDispatch();
 
     const menuItemPosition = chekMenuItemPosition(selectedHistoryItemKey);
-    const lastItemPosition = transformations.children.length;
 
     const undoIsDisabled = menuItemPosition === 0;
-    const redoIsDisabled = menuItemPosition === lastItemPosition;
+    const redoIsDisabled = isLastHistoryElement(selectedHistoryItemKey, transformations.children);
 
     const handleUndo = () => {
         const newSelectedHistoryItemKey = `${HISTORY_ITEM}-${menuItemPosition - 1}`;
@@ -49,6 +48,7 @@ function Toolbar() {
         dispatch(updateTransformationHistory(newTransformations));
         if (newTransformations.length === 0) {
             dispatch(cleanPathAndParams());
+            dispatch(updateSelectedHistoryItemKey(null));
         } else {
             dispatch(
                 updateParams(getMenuItemProp(newSelectedHistoryItemKey, transformations.children))

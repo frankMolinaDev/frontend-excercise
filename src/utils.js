@@ -53,3 +53,9 @@ export const getNewHistoryItemKey = (transformationsArr) => {
 
     return newLastPosition;
 };
+
+export const isLastHistoryElement = (key, transformationsArr) => {
+    const lastElementIndex = transformationsArr.length - 1;
+    const lastElementKey = transformationsArr[lastElementIndex]?.key;
+    return key === lastElementKey || !key;
+};
