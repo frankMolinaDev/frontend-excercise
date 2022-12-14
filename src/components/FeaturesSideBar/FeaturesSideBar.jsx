@@ -5,17 +5,24 @@ import {useDispatch, useSelector} from "react-redux";
 import {arrayToMenuItems, checkMenuItemType, getMenuItemProp} from "../../utils";
 import {getImagesList} from "../../request/request";
 import {HISTORY_ITEM, IMAGE_LIST_ITEM} from "../../constants";
-import {updateDefaultImagesList, updateParams, updatePath} from "../../redux/slices/imageSlice";
+import {
+    updateDefaultImagesList,
+    updateParams,
+    updatePath,
+    updateSelectedGalleryItem
+} from "../../redux/slices/imageSlice";
+import {updateSelectedHistoryItemKey} from "../../redux/slices/historySlice";
 
 const {Sider} = Layout;
 
 function FeaturesSideBar() {
     const [collapsed, setCollapsed] = useState(false);
     const dispatch = useDispatch();
-    const {imagesList} = useSelector((state) => state.image);
-    const {transformations} = useSelector((state) => state.history);
+    const {imagesList, selectedGalleryItem} = useSelector((state) => state.image);
+    const {transformations, selectedHistoryItemKey} = useSelector((state) => state.history);
     const menuItems = [transformations, imagesList];
 
+    console.log("selectedHistoryItem", selectedHistoryItemKey);
     useEffect(() => {
         const fetchImagesList = async () => {
             const resp = await getImagesList();
@@ -28,9 +35,11 @@ function FeaturesSideBar() {
         switch (checkMenuItemType(e.key)) {
             case HISTORY_ITEM:
                 dispatch(updateParams(getMenuItemProp(e.key, transformations.children)));
+                dispatch(updateSelectedHistoryItemKey(e.key));
                 break;
             case IMAGE_LIST_ITEM:
                 dispatch(updatePath(getMenuItemProp(e.key, imagesList.children)));
+                dispatch(updateSelectedGalleryItem(e.key));
                 break;
         }
     };
@@ -43,7 +52,8 @@ function FeaturesSideBar() {
         >
             <Menu
                 theme="dark"
-                defaultSelectedKeys={["1"]}
+                defaultOpenKeys={["sub1", "sub2"]}
+                selectedKeys={[selectedGalleryItem, selectedHistoryItemKey]}
                 mode="inline"
                 items={menuItems}
                 onClick={onItemClick}

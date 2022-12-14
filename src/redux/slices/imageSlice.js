@@ -1,10 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {getItem} from "../../utils";
+import {galleryItems} from "../../components/FeaturesSideBar/Items";
 
 const initialState = {
     path: "",
     params: {},
-    imagesList: getItem("Select Image", "sub3", undefined, [])
+    imagesList: galleryItems,
+    selectedGalleryItem: undefined
 };
 
 export const imageSlice = createSlice({
@@ -19,10 +20,14 @@ export const imageSlice = createSlice({
         },
         updateDefaultImagesList: (state, {payload}) => {
             state.imagesList.children = payload;
+        },
+        updateSelectedGalleryItem: (state, {payload}) => {
+            state.selectedGalleryItem = payload;
         }
     }
 });
 
-export const {updatePath, updateParams, updateDefaultImagesList} = imageSlice.actions;
+export const {updatePath, updateParams, updateDefaultImagesList, updateSelectedGalleryItem} =
+    imageSlice.actions;
 
 export default imageSlice.reducer;

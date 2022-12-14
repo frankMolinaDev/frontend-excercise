@@ -12,6 +12,7 @@ const {Content, Footer} = Layout;
 
 function Home() {
     const {path, params} = useSelector((state) => state.image);
+    const originalImageURL = generateNewTransformationImage(path, {});
     const imageURL = generateNewTransformationImage(path, params);
     return (
         <Layout>
@@ -19,7 +20,11 @@ function Home() {
             <Layout className="site-layout">
                 <FeaturesSideBar />
                 <Content className="content">
-                    {imageURL ? <PreviewImage path={imageURL} /> : <UploadImage />}
+                    {imageURL ? (
+                        <PreviewImage path={imageURL} originalPath={originalImageURL} />
+                    ) : (
+                        <UploadImage />
+                    )}
                     <OptionsTabs />
                     <Footer className="footer">
                         Francisco Molina ©2022 As part of Nan-Labs recruitment process

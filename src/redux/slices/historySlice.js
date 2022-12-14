@@ -1,9 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {getItem} from "../../utils";
+import {historyItems} from "../../components/FeaturesSideBar/Items";
 
 const initialState = {
-    transformations: getItem("History", "sub2", undefined, []),
-    count: 0
+    transformations: historyItems,
+    count: 0,
+    selectedHistoryItemKey: undefined
 };
 
 export const historySlice = createSlice({
@@ -12,11 +13,18 @@ export const historySlice = createSlice({
     reducers: {
         updateTransformationHistory: (state, {payload}) => {
             state.transformations.children = payload;
-            state.count++;
+            state.count = payload.length;
+        },
+        updateSelectedHistoryItemKey: (state, {payload}) => {
+            state.selectedHistoryItemKey = payload;
         }
     }
 });
 
-export const {updateTransformationHistory} = historySlice.actions;
+export const {
+    updateTransformationHistory,
+    initializeTransformationsItem,
+    updateSelectedHistoryItemKey
+} = historySlice.actions;
 
 export default historySlice.reducer;

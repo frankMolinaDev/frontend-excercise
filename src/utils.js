@@ -31,6 +31,10 @@ export const checkMenuItemType = (key) => {
     return ADD_IMAGE;
 };
 
+export const chekMenuItemPosition = (key) => {
+    return key.split("-")[1];
+};
+
 export const stringToLabelValueObj = (string) => {
     return {label: string, value: string};
 };

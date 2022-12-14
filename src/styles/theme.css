@@ -75,7 +75,7 @@
 }
 
 .tabs {
-  height: 250;
+  height: 250px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -104,3 +104,13 @@
 }
 
 /*End of Preview Image classes*/
+
+/*Toolbar classes*/
+.toolbar-container {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+  position: absolute;
+}
+/*End of Toolbar classes*/
+

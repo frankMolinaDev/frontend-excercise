@@ -2,7 +2,10 @@ import {Button} from "antd";
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {HISTORY_ITEM} from "../../../constants";
-import {updateTransformationHistory} from "../../../redux/slices/historySlice";
+import {
+    updateSelectedHistoryItemKey,
+    updateTransformationHistory
+} from "../../../redux/slices/historySlice";
 import {updateParams} from "../../../redux/slices/imageSlice";
 import {getItem, stringArrToLabelValueObjArr} from "../../../utils";
 import ValueSelect from "./ValueSelect";
@@ -25,19 +28,27 @@ function TransformationValue({transformation, type}) {
 
     const applyTransformation = () => {
         const newParams = {...params, [id]: inputValue};
+        const newTransformations = [...transformations.children];
+        const historyItemKey = `${HISTORY_ITEM}-${count}`;
 
-        dispatch(
-            updateTransformationHistory([
-                ...transformations.children,
-                getItem(
-                    `${transformation.name} Change`,
-                    `${HISTORY_ITEM}-${count}`,
-                    undefined,
-                    undefined,
-                    params
-                )
-            ])
+        if (count === 0) {
+            newTransformations.push(
+                getItem(`Original`, `${HISTORY_ITEM}-original`, undefined, undefined, {})
+            );
+        }
+
+        newTransformations.push(
+            getItem(
+                `${transformation.name} Change`,
+                historyItemKey,
+                undefined,
+                undefined,
+                newParams
+            )
         );
+
+        dispatch(updateTransformationHistory(newTransformations));
+        dispatch(updateSelectedHistoryItemKey(historyItemKey));
         dispatch(updateParams(newParams));
     };
 
