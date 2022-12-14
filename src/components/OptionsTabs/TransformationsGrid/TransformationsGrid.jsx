@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button, Row, Col, Drawer} from "antd";
 import TransformationValue from "../TransformationValue/TransformationValue";
 import {useSelector} from "react-redux";
@@ -16,6 +16,12 @@ function TransformationsGrid({transformations, type}) {
     const onClose = () => {
         setOpen(false);
     };
+
+    useEffect(() => {
+        if (disableOptions) {
+            setOpen(false);
+        }
+    }, [disableOptions]);
 
     return (
         <>

@@ -3,7 +3,6 @@ import {historyItems} from "../../components/FeaturesSideBar/Items";
 
 const initialState = {
     transformations: historyItems,
-    count: 1,
     selectedHistoryItemKey: undefined
 };
 
@@ -13,7 +12,6 @@ export const historySlice = createSlice({
     reducers: {
         updateTransformationHistory: (state, {payload}) => {
             state.transformations.children = payload;
-            state.count = payload.length;
         },
         updateSelectedHistoryItemKey: (state, {payload}) => {
             state.selectedHistoryItemKey = payload;

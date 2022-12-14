@@ -23,11 +23,20 @@ export const imageSlice = createSlice({
         },
         updateSelectedGalleryItem: (state, {payload}) => {
             state.selectedGalleryItem = payload;
+        },
+        cleanPathAndParams: (state) => {
+            state.path = "";
+            state.params = {};
         }
     }
 });
 
-export const {updatePath, updateParams, updateDefaultImagesList, updateSelectedGalleryItem} =
-    imageSlice.actions;
+export const {
+    updatePath,
+    updateParams,
+    updateDefaultImagesList,
+    updateSelectedGalleryItem,
+    cleanPathAndParams
+} = imageSlice.actions;
 
 export default imageSlice.reducer;

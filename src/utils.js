@@ -42,3 +42,14 @@ export const stringToLabelValueObj = (string) => {
 export const stringArrToLabelValueObjArr = (stringArr) => {
     return stringArr.map((string) => stringToLabelValueObj(string));
 };
+
+export const getNewHistoryItemKey = (transformationsArr) => {
+    const length = transformationsArr.length;
+    if (length === 0) return 1;
+
+    const lastElementIndex = transformationsArr.length - 1;
+    const lastElementPosition = chekMenuItemPosition(transformationsArr[lastElementIndex].key);
+    const newLastPosition = lastElementPosition + 1;
+
+    return newLastPosition;
+};

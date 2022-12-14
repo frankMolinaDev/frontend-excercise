@@ -9,14 +9,14 @@ import {
     updateTransformationHistory
 } from "../../redux/slices/historySlice";
 import {HISTORY_ITEM} from "../../constants";
-import {updateParams} from "../../redux/slices/imageSlice";
+import {cleanPathAndParams, updateParams} from "../../redux/slices/imageSlice";
 
 function Toolbar() {
-    const {count, selectedHistoryItemKey, transformations} = useSelector((state) => state.history);
+    const {selectedHistoryItemKey, transformations} = useSelector((state) => state.history);
     const dispatch = useDispatch();
 
     const menuItemPosition = chekMenuItemPosition(selectedHistoryItemKey);
-    const lastItemPosition = count - 1;
+    const lastItemPosition = transformations.children.length;
 
     const undoIsDisabled = menuItemPosition === 0;
     const redoIsDisabled = menuItemPosition === lastItemPosition;
@@ -47,10 +47,14 @@ function Toolbar() {
         );
 
         dispatch(updateTransformationHistory(newTransformations));
-        dispatch(
-            updateParams(getMenuItemProp(newSelectedHistoryItemKey, transformations.children))
-        );
-        dispatch(updateSelectedHistoryItemKey(newSelectedHistoryItemKey));
+        if (newTransformations.length === 0) {
+            dispatch(cleanPathAndParams());
+        } else {
+            dispatch(
+                updateParams(getMenuItemProp(newSelectedHistoryItemKey, transformations.children))
+            );
+            dispatch(updateSelectedHistoryItemKey(newSelectedHistoryItemKey));
+        }
     };
 
     const handleUpload = () => {};

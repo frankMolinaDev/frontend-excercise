@@ -7,14 +7,14 @@ import {
     updateTransformationHistory
 } from "../../../redux/slices/historySlice";
 import {updateParams} from "../../../redux/slices/imageSlice";
-import {getItem, stringArrToLabelValueObjArr} from "../../../utils";
+import {getItem, getNewHistoryItemKey, stringArrToLabelValueObjArr} from "../../../utils";
 import ValueSelect from "./ValueSelect";
 import ValueSlider from "./ValueSlider";
 
 function TransformationValue({transformation, type}) {
     const dispatch = useDispatch();
     const {params} = useSelector((state) => state.image);
-    const {transformations, count} = useSelector((state) => state.history);
+    const {transformations} = useSelector((state) => state.history);
 
     const [inputValue, setInputValue] = useState();
     const {id, values} = transformation;
@@ -29,10 +29,11 @@ function TransformationValue({transformation, type}) {
     const applyTransformation = () => {
         const newParams = {...params, [id]: inputValue};
         const newTransformations = [...transformations.children];
-        const historyItemKey = `${HISTORY_ITEM}-${count}`;
+
+        const historyItemKey = `${HISTORY_ITEM}-${getNewHistoryItemKey(transformations.children)}`;
         const isHistoryEmpty = transformations.children.length === 0;
 
-        if (count === 1 && isHistoryEmpty) {
+        if (isHistoryEmpty) {
             newTransformations.push(
                 getItem(`Original`, `${HISTORY_ITEM}-0`, undefined, undefined, {})
             );
