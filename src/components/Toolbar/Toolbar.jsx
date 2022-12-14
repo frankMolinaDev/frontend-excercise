@@ -1,5 +1,5 @@
 import {Button, Tooltip} from "antd";
-import {UndoOutlined, RedoOutlined, DeleteOutlined, CloudUploadOutlined} from "@ant-design/icons";
+import {UndoOutlined, RedoOutlined, DeleteOutlined} from "@ant-design/icons";
 
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
@@ -10,7 +10,7 @@ import {
 } from "../../redux/slices/historySlice";
 import {HISTORY_ITEM} from "../../constants";
 import {cleanPathAndParams, updateParams} from "../../redux/slices/imageSlice";
-import {DELETE_PROMPT, REDO_PROMPT, UNDO_PROMPT, UPLOAD_PROMPT} from "../../prompts";
+import {DELETE_PROMPT, REDO_PROMPT, UNDO_PROMPT} from "../../prompts";
 
 function Toolbar() {
     const {selectedHistoryItemKey, transformations} = useSelector((state) => state.history);
@@ -58,7 +58,6 @@ function Toolbar() {
         }
     };
 
-    const handleUpload = () => {};
     return (
         <div className={"toolbar-container"}>
             <Tooltip title={UNDO_PROMPT} placement={"bottomLeft"}>
@@ -80,10 +79,6 @@ function Toolbar() {
             <Tooltip title={DELETE_PROMPT} placement={"bottomLeft"}>
                 <Button onClick={handleDelete} icon={<DeleteOutlined />}></Button>
             </Tooltip>
-            {/* 
-            <Tooltip title={UPLOAD_PROMPT} placement={"bottomLeft"}>
-                <Button onClick={handleUpload} icon={<CloudUploadOutlined />}></Button>
-            </Tooltip> */}
         </div>
     );
 }
