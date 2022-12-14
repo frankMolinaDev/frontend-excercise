@@ -3,3 +3,5 @@ export const HISTORY_ITEM = "HISTORY_ITEM";
 export const ADD_IMAGE = "ADD_IMAGE";
 
 export const URL = "url";
+
+export const FORWARD = "FORWARD";

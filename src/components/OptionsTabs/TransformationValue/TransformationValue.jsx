@@ -30,8 +30,9 @@ function TransformationValue({transformation, type}) {
         const newParams = {...params, [id]: inputValue};
         const newTransformations = [...transformations.children];
         const historyItemKey = `${HISTORY_ITEM}-${count}`;
+        const isHistoryEmpty = transformations.children.length === 0;
 
-        if (count === 1) {
+        if (count === 1 && isHistoryEmpty) {
             newTransformations.push(
                 getItem(`Original`, `${HISTORY_ITEM}-0`, undefined, undefined, {})
             );
