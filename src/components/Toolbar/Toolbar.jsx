@@ -6,12 +6,13 @@ import {useSelector} from "react-redux";
 import {chekMenuItemPosition} from "../../utils";
 
 function Toolbar() {
-    const {count, transformations, selectedHistoryItemKey} = useSelector((state) => state.history);
+    const {count, selectedHistoryItemKey} = useSelector((state) => state.history);
+    const menuItemPosition = chekMenuItemPosition(selectedHistoryItemKey);
+    const lastItemPosition = count - 1;
 
-    const undoIsDisabled = count === 0 || chekMenuItemPosition(selectedHistoryItemKey) === 0;
-    const redoIsDisabled = count !== transformations.children.length + 1 && count === 0;
-    console.log("count", count);
-    console.log("transformations", transformations);
+    const undoIsDisabled = menuItemPosition == 0;
+    const redoIsDisabled = menuItemPosition == lastItemPosition;
+
     const handleUndo = () => {};
     const handleRedo = () => {};
     const handleDelete = () => {};

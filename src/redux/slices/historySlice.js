@@ -3,7 +3,7 @@ import {historyItems} from "../../components/FeaturesSideBar/Items";
 
 const initialState = {
     transformations: historyItems,
-    count: 0,
+    count: 1,
     selectedHistoryItemKey: undefined
 };
 

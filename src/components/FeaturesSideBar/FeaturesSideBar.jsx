@@ -22,7 +22,6 @@ function FeaturesSideBar() {
     const {transformations, selectedHistoryItemKey} = useSelector((state) => state.history);
     const menuItems = [transformations, imagesList];
 
-    console.log("selectedHistoryItem", selectedHistoryItemKey);
     useEffect(() => {
         const fetchImagesList = async () => {
             const resp = await getImagesList();

@@ -32,7 +32,7 @@ export const checkMenuItemType = (key) => {
 };
 
 export const chekMenuItemPosition = (key) => {
-    return key.split("-")[1];
+    return key ? key.split("-")[1] : 0;
 };
 
 export const stringToLabelValueObj = (string) => {

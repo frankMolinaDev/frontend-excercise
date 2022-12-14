@@ -31,9 +31,9 @@ function TransformationValue({transformation, type}) {
         const newTransformations = [...transformations.children];
         const historyItemKey = `${HISTORY_ITEM}-${count}`;
 
-        if (count === 0) {
+        if (count === 1) {
             newTransformations.push(
-                getItem(`Original`, `${HISTORY_ITEM}-original`, undefined, undefined, {})
+                getItem(`Original`, `${HISTORY_ITEM}-0`, undefined, undefined, {})
             );
         }
 
