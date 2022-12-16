@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from "react";
-import {Layout, Menu} from "antd";
+import {Layout, Menu, Spin} from "antd";
 import {useDispatch, useSelector} from "react-redux";
-import {arrayToMenuItems, checkMenuItemType, getMenuItemProp} from "../../utils";
-import {getImagesList} from "../../request/request";
+import {checkMenuItemType, getMenuItemProp} from "../../utils";
 import {HISTORY_ITEM, IMAGE_LIST_ITEM} from "../../constants";
 import {
-    updateDefaultImagesList,
+    getImages,
     updateParams,
     updatePath,
     updateSelectedGalleryItem
@@ -18,16 +17,12 @@ const {Sider} = Layout;
 function FeaturesSideBar() {
     const [collapsed, setCollapsed] = useState(false);
     const dispatch = useDispatch();
-    const {imagesList, selectedGalleryItem} = useSelector((state) => state.image);
+    const {imagesList, selectedGalleryItem, loading} = useSelector((state) => state.image);
     const {transformations, selectedHistoryItemKey} = useSelector((state) => state.history);
     const menuItems = [transformations, imagesList];
 
     useEffect(() => {
-        const fetchImagesList = async () => {
-            const resp = await getImagesList();
-            dispatch(updateDefaultImagesList(arrayToMenuItems(resp)));
-        };
-        fetchImagesList();
+        dispatch(getImages());
     }, []);
 
     const onItemClick = (e) => {
@@ -49,14 +44,16 @@ function FeaturesSideBar() {
             onCollapse={(value) => setCollapsed(value)}
             className={"sidebar"}
         >
-            <Menu
-                theme="dark"
-                defaultOpenKeys={["sub1", "sub2"]}
-                selectedKeys={[selectedGalleryItem, selectedHistoryItemKey]}
-                mode="inline"
-                items={menuItems}
-                onClick={onItemClick}
-            />
+            <Spin spinning={loading} tip={"Loading..."} size={"large"}>
+                <Menu
+                    theme="dark"
+                    defaultOpenKeys={["sub1", "sub2"]}
+                    selectedKeys={[selectedGalleryItem, selectedHistoryItemKey]}
+                    mode="inline"
+                    items={menuItems}
+                    onClick={onItemClick}
+                />
+            </Spin>
         </Sider>
     );
 }

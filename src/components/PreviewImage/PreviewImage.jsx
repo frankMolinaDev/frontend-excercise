@@ -1,11 +1,23 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useState} from "react";
 import Toolbar from "../Toolbar/Toolbar";
-import {Tooltip} from "antd";
+import {Tooltip, Image, Spin} from "antd";
 import {PREVIEW_PROMPT, SELECT_IMAGE_PROMPT} from "../../prompts";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    finishedLoadingTransformation,
+    hideFullImageView,
+    startedLoadingTransformation
+} from "../../redux/slices/imageSlice";
 
-const PreviewImage = ({path, maxHeight = 600, maxWidth = 800, originalPath}) => {
+const PreviewImage = ({path, originalPath}) => {
     const [showOriginal, setShowOriginal] = useState(false);
+    const {loadingTransformation, showFull} = useSelector((state) => state.image);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(startedLoadingTransformation());
+    }, [dispatch, path]);
 
     const handleMouseDown = () => {
         setShowOriginal(true);
@@ -14,21 +26,36 @@ const PreviewImage = ({path, maxHeight = 600, maxWidth = 800, originalPath}) => 
     const handleMouseUp = () => {
         setShowOriginal(false);
     };
+
+    const handleLoad = () => {
+        dispatch(finishedLoadingTransformation());
+    };
+
+    const handleFullViewClose = () => {
+        dispatch(hideFullImageView());
+    };
     return (
         <>
-            <Toolbar width={maxWidth} />
-
+            <Toolbar />
             <div className="picture-container">
                 {path ? (
-                    <Tooltip title={PREVIEW_PROMPT} placement="right">
-                        <picture onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
-                            {showOriginal ? (
-                                <img src={originalPath} style={{maxHeight, maxWidth}} />
-                            ) : (
-                                <img src={path} style={{maxHeight, maxWidth}} />
-                            )}
-                        </picture>
-                    </Tooltip>
+                    <Spin spinning={loadingTransformation} tip="Loading..." size="large">
+                        <Tooltip title={PREVIEW_PROMPT} placement="bottomRight">
+                            <Image
+                                src={showOriginal ? originalPath : path}
+                                preview={{
+                                    visible: showFull,
+                                    onVisibleChange: handleFullViewClose,
+                                    mask: <></>,
+                                    maskClassName: ""
+                                }}
+                                width={800}
+                                onLoad={handleLoad}
+                                onMouseDown={handleMouseDown}
+                                onMouseUp={handleMouseUp}
+                            />
+                        </Tooltip>
+                    </Spin>
                 ) : (
                     <div>{SELECT_IMAGE_PROMPT}</div>
                 )}

@@ -18,4 +18,3 @@ The libraries used are:
 - Axios
 - React
 - Redux
-- redux promise Middleware

@@ -1,5 +1,5 @@
 import {Button, Tooltip} from "antd";
-import {UndoOutlined, RedoOutlined, DeleteOutlined} from "@ant-design/icons";
+import {UndoOutlined, RedoOutlined, DeleteOutlined, ExpandOutlined} from "@ant-design/icons";
 
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
@@ -9,8 +9,8 @@ import {
     updateTransformationHistory
 } from "../../redux/slices/historySlice";
 import {HISTORY_ITEM} from "../../constants";
-import {cleanPathAndParams, updateParams} from "../../redux/slices/imageSlice";
-import {DELETE_PROMPT, REDO_PROMPT, UNDO_PROMPT} from "../../prompts";
+import {cleanPathAndParams, showFullImageView, updateParams} from "../../redux/slices/imageSlice";
+import {DELETE_PROMPT, EXPAND_PROMPT, REDO_PROMPT, UNDO_PROMPT} from "../../prompts";
 
 function Toolbar() {
     const {selectedHistoryItemKey, transformations} = useSelector((state) => state.history);
@@ -58,6 +58,10 @@ function Toolbar() {
         }
     };
 
+    const handleExpand = () => {
+        dispatch(showFullImageView());
+    };
+
     return (
         <div className={"toolbar-container"}>
             <Tooltip title={UNDO_PROMPT} placement={"bottomLeft"}>
@@ -78,6 +82,10 @@ function Toolbar() {
 
             <Tooltip title={DELETE_PROMPT} placement={"bottomLeft"}>
                 <Button onClick={handleDelete} icon={<DeleteOutlined />}></Button>
+            </Tooltip>
+
+            <Tooltip title={EXPAND_PROMPT} placement={"bottomLeft"}>
+                <Button onClick={handleExpand} icon={<ExpandOutlined />}></Button>
             </Tooltip>
         </div>
     );

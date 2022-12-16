@@ -75,7 +75,7 @@
 }
 
 .tabs {
-  height: 250px;
+  height: 241px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -100,7 +100,10 @@
     flex: 2 1 auto;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    max-height: 600px;
+    overflow-y: auto;
+    margin-top: 16px;
 }
 
 /*End of Preview Image classes*/
@@ -111,6 +114,10 @@
   gap: 8px;
   margin: 8px 0;
   position: absolute;
+  z-index: 2;
 }
 /*End of Toolbar classes*/
 
+.ant-image-mask:hover {
+  opacity: 0 !important;
+}

@@ -13,7 +13,7 @@ import ValueSlider from "./ValueSlider";
 
 function TransformationValue({transformation, type}) {
     const dispatch = useDispatch();
-    const {params} = useSelector((state) => state.image);
+    const {params, loadingTransformation} = useSelector((state) => state.image);
     const {transformations} = useSelector((state) => state.history);
 
     const [inputValue, setInputValue] = useState();
@@ -65,7 +65,9 @@ function TransformationValue({transformation, type}) {
                     values={formattedValues}
                 />
             )}
-            <Button onClick={applyTransformation}>Apply</Button>
+            <Button disabled={loadingTransformation} onClick={applyTransformation}>
+                Apply
+            </Button>
         </div>
     );
 }
